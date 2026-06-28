@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title> العاب كمبيوتر تحميل </title>
+<title>العاب كمبيوتر تحميل</title>
 
 
 <style>
@@ -63,6 +63,46 @@ background:#16a34a;
 padding:8px 20px;
 border-radius:20px;
 font-size:17px;
+
+}
+
+
+/* زر التليجرام */
+
+.telegram{
+
+position:fixed;
+
+right:15px;
+
+bottom:25px;
+
+width:60px;
+
+height:60px;
+
+background:#229ED9;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+box-shadow:0 5px 15px #0008;
+
+z-index:999;
+
+}
+
+
+.telegram img{
+
+width:38px;
+
+height:38px;
 
 }
 
@@ -227,6 +267,16 @@ margin-top:60px;
 
 
 
+<!-- زر التليجرام -->
+
+<a href="https://t.me/gaamesdownloads" target="_blank" class="telegram">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg">
+
+</a>
+
+
+
 
 
 <div id="home">
@@ -327,9 +377,6 @@ const db=firebase.database();
 
 
 
-// نظام الصيانة من الأدمن
-
-
 db.ref("settings/maintenance").on("value",s=>{
 
 
@@ -358,11 +405,6 @@ document.getElementById("maintenance").style.display="none";
 
 
 
-
-
-
-
-// عداد اونلاين كبير
 
 
 let onlineNumber = Math.floor(Math.random()*300)+100;
@@ -483,11 +525,7 @@ list.innerHTML+=`
 <img src="${data.image}">
 
 
-<h2>
-
-${data.name}
-
-</h2>
+<h2>${data.name}</h2>
 
 
 </div>
@@ -561,4 +599,4 @@ document.getElementById("home").style.display="block";
 
 </body>
 
-</html>
+  </html>
