@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>تحميل الألعاب</title>
+<title> 🎮 تحميل العاب</title>
+
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,99 +18,547 @@ box-sizing:border-box;
 font-family:Tahoma;
 }
 
+
 body{
-background:#0f172a;
+
+background:#070b18;
+color:white;
+min-height:100vh;
 padding:20px;
+
 }
 
-.title{
+
+#maintenance{
+
+display:none;
 text-align:center;
-color:white;
-font-size:35px;
-margin-bottom:30px;
+margin-top:120px;
+font-size:30px;
+
 }
+
+
+
+.header{
+
+text-align:center;
+margin-bottom:30px;
+
+}
+
+
+.header h1{
+
+font-size:38px;
+
+}
+
+
+.online{
+
+margin-top:15px;
+display:inline-block;
+background:#16a34a;
+padding:8px 20px;
+border-radius:20px;
+font-size:17px;
+
+}
+
+
+
+.menu{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+
+}
+
+
+
+.box{
+
+background:linear-gradient(145deg,#1e293b,#111827);
+padding:35px 15px;
+border-radius:25px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 10px 30px #0008;
+
+}
+
+
+.box:hover{
+
+transform:scale(1.05);
+
+}
+
+
+
+.box h2{
+
+font-size:24px;
+
+}
+
+
+
+
+#content{
+
+display:none;
+
+}
+
+
+
+.back{
+
+display:inline-block;
+background:#2563eb;
+padding:12px 25px;
+border-radius:15px;
+margin-bottom:20px;
+cursor:pointer;
+
+}
+
+
 
 .games{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:20px;
+
 }
 
+
+
 .card{
+
 background:#1e293b;
 border-radius:20px;
 overflow:hidden;
 cursor:pointer;
 transition:.3s;
-box-shadow:0 5px 15px rgba(0,0,0,.3);
+
 }
+
+
 
 .card:hover{
-transform:translateY(-5px);
+
+transform:translateY(-7px);
+
 }
 
+
+
 .card img{
+
 width:100%;
 height:180px;
 object-fit:cover;
+
 }
 
+
+
 .card h2{
-color:white;
+
 padding:15px;
 text-align:center;
-font-size:20px;
+
 }
+
+
+
+.empty{
+
+text-align:center;
+font-size:25px;
+margin-top:60px;
+
+}
+
+
 </style>
 
 </head>
+
+
 <body>
 
-<h1 class="title">🎮 تحميل الألعاب</h1>
 
-<div class="games" id="games"></div>
+
+<div id="maintenance">
+
+🔧 الموقع تحت الصيانة حاليا
+
+</div>
+
+
+
+
+<div id="site">
+
+
+<div class="header">
+
+
+<h1>
+🎮 Game Store
+</h1>
+
+
+<div class="online">
+
+🟢 Online : <span id="count">100</span>
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div id="home">
+
+
+<div class="menu">
+
+
+
+<div class="box" onclick="openGames()">
+
+<h2>
+🎮 تحميل جميع ألعاب الكمبيوتر
+</h2>
+
+</div>
+
+
+
+
+<div class="box" onclick="openPatch()">
+
+<h2>
+🛠️ تحميل باتشات الألعاب
+</h2>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div id="content">
+
+
+<div class="back" onclick="backHome()">
+
+⬅ رجوع
+
+</div>
+
+
+<div class="games" id="list"></div>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
 
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+
+
 
 <script>
 
+
 firebase.initializeApp({
+
 apiKey:"AIzaSyAUc2cH9gVE7RECiW19XQXJNZQxVH96sFE",
+
 authDomain:"zezo-59a8d.firebaseapp.com",
+
 databaseURL:"https://zezo-59a8d-default-rtdb.firebaseio.com",
+
 projectId:"zezo-59a8d"
+
 });
 
-const db = firebase.database();
 
-const games = document.getElementById("games");
 
-db.ref("games").on("value",snap=>{
+const db=firebase.database();
 
-games.innerHTML="";
+
+
+
+
+
+// نظام الصيانة من الأدمن
+
+
+db.ref("settings/maintenance").on("value",s=>{
+
+
+if(s.val()==true){
+
+
+document.getElementById("site").style.display="none";
+
+document.getElementById("maintenance").style.display="block";
+
+
+}else{
+
+
+document.getElementById("site").style.display="block";
+
+document.getElementById("maintenance").style.display="none";
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+
+
+// عداد اونلاين كبير
+
+
+let onlineNumber = Math.floor(Math.random()*300)+100;
+
+
+document.getElementById("count").innerHTML = onlineNumber;
+
+
+
+setInterval(()=>{
+
+
+let change = Math.floor(Math.random()*80)+20;
+
+
+let action = Math.random();
+
+
+
+if(action > 0.5){
+
+
+onlineNumber += change;
+
+
+}else{
+
+
+onlineNumber -= Math.floor(change/2);
+
+
+}
+
+
+
+
+if(onlineNumber < 90){
+
+onlineNumber = 90;
+
+}
+
+
+
+
+if(onlineNumber > 5000){
+
+onlineNumber = 5000;
+
+}
+
+
+
+document.getElementById("count").innerHTML = onlineNumber;
+
+
+
+},60000);
+
+
+
+
+
+
+
+
+
+const list=document.getElementById("list");
+
+
+
+
+function showData(type){
+
+
+
+document.getElementById("home").style.display="none";
+
+
+document.getElementById("content").style.display="block";
+
+
+
+db.ref(type).on("value",snap=>{
+
+
+
+list.innerHTML="";
+
+
+
+if(!snap.exists()){
+
+
+list.innerHTML="<div class='empty'>لا يوجد محتوى حاليا</div>";
+
+return;
+
+
+}
+
+
+
 
 snap.forEach(item=>{
 
+
 let data=item.val();
 
-games.innerHTML+=`
-<div class="card"
-onclick="window.open('${data.link}')">
+
+
+list.innerHTML+=`
+
+
+<div class="card" onclick="window.open('${data.link}')">
+
 
 <img src="${data.image}">
 
-<h2>${data.name}</h2>
+
+<h2>
+
+${data.name}
+
+</h2>
+
 
 </div>
+
+
+
 `;
 
-});
+
 
 });
+
+
+
+});
+
+
+
+}
+
+
+
+
+
+
+
+function openGames(){
+
+
+showData("games");
+
+
+}
+
+
+
+
+function openPatch(){
+
+
+showData("patches");
+
+
+}
+
+
+
+
+
+
+
+function backHome(){
+
+
+
+document.getElementById("content").style.display="none";
+
+
+document.getElementById("home").style.display="block";
+
+
+}
+
+
+
 
 </script>
 
+
+
+
 </body>
-</html>
+
+  </html>
