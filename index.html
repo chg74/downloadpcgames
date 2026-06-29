@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title> العاب كمبيوتر تحميل </title>
+<title>العاب كمبيوتر تحميل</title>
 
 <style>
 
@@ -17,38 +17,32 @@ box-sizing:border-box;
 font-family:Tahoma;
 }
 
-
 body{
+
 background:#070b18;
 color:white;
 min-height:100vh;
 padding:20px;
-}
 
+}
 
 
 #maintenance{
 
 display:none;
-
 text-align:center;
-
 margin-top:120px;
-
 font-size:30px;
 
 }
 
 
-
 .header{
 
 text-align:center;
-
 margin-bottom:30px;
 
 }
-
 
 
 .header h1{
@@ -58,97 +52,64 @@ font-size:38px;
 }
 
 
-
 .online{
 
 margin-top:15px;
-
 display:inline-block;
-
 background:#16a34a;
-
 padding:8px 20px;
-
 border-radius:20px;
-
 font-size:17px;
 
 }
 
 
-
-
 .telegram{
 
 position:fixed;
-
 right:15px;
-
 bottom:25px;
-
 width:60px;
-
 height:60px;
-
 background:#229ED9;
-
 border-radius:50%;
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 box-shadow:0 5px 15px #0008;
-
 z-index:999;
 
 }
 
 
-
 .telegram img{
 
 width:38px;
-
 height:38px;
 
 }
 
 
-
-
 .menu{
 
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-
 gap:20px;
 
 }
 
 
-
 .box{
 
 background:linear-gradient(145deg,#1e293b,#111827);
-
 padding:35px 15px;
-
 border-radius:25px;
-
 text-align:center;
-
 cursor:pointer;
-
 transition:.3s;
-
 box-shadow:0 10px 30px #0008;
 
 }
-
 
 
 .box:hover{
@@ -158,13 +119,11 @@ transform:scale(1.05);
 }
 
 
-
 .box h2{
 
 font-size:24px;
 
 }
-
 
 
 #content{
@@ -174,51 +133,36 @@ display:none;
 }
 
 
-
 .back{
 
 display:inline-block;
-
 background:#2563eb;
-
 padding:12px 25px;
-
 border-radius:15px;
-
 margin-bottom:20px;
-
 cursor:pointer;
 
 }
-
 
 
 .games{
 
 display:grid;
-
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-
 gap:20px;
 
 }
 
 
-
 .card{
 
 background:#1e293b;
-
 border-radius:20px;
-
 overflow:hidden;
-
 cursor:pointer;
-
 transition:.3s;
 
 }
-
 
 
 .card:hover{
@@ -228,49 +172,38 @@ transform:translateY(-7px);
 }
 
 
-
 .card img{
 
 width:100%;
-
 height:180px;
-
 object-fit:cover;
 
 }
 
 
-
 .card h2{
 
 padding:15px;
-
 text-align:center;
 
 }
-
 
 
 .empty{
 
 text-align:center;
-
 font-size:25px;
-
 margin-top:60px;
 
 }
 
 
-
 </style>
-
 
 </head>
 
 
 <body>
-
 
 
 <div id="maintenance">
@@ -280,18 +213,13 @@ margin-top:60px;
 </div>
 
 
-
-
 <div id="site">
 
 
 <div class="header">
 
-
 <h1>
-
 🎮 Game Store
-
 </h1>
 
 
@@ -306,15 +234,11 @@ margin-top:60px;
 
 
 
-
-
 <a href="https://t.me/gaamesdownloads" target="_blank" class="telegram">
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg">
 
 </a>
-
-
 
 
 
@@ -326,41 +250,27 @@ margin-top:60px;
 
 <div class="box" onclick="openGames()">
 
-
 <h2>
-
 🎮 تحميل جميع ألعاب الكمبيوتر
-
 </h2>
 
-
 </div>
-
-
 
 
 
 <div class="box" onclick="openPatch()">
 
-
 <h2>
-
 🛠️ تحميل باتشات الألعاب
-
 </h2>
 
-
-</div>
-
-
-
 </div>
 
 
 </div>
 
 
-
+</div>
 
 
 
@@ -377,25 +287,13 @@ margin-top:60px;
 <div class="games" id="list"></div>
 
 
-
 </div>
 
 
 
-
-</div>
-
-
-
-
-
-
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+</div><script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-
-
-
 
 
 <script>
@@ -420,10 +318,7 @@ const db=firebase.database();
 
 
 
-
-
-
-// الصيانة من الأدمن مباشرة
+// الصيانة
 
 db.ref("settings/maintenance").on("value",s=>{
 
@@ -454,10 +349,7 @@ document.getElementById("maintenance").style.display="none";
 
 
 
-
-
-
-// الاونلاين
+// عدد الزوار
 
 let onlineNumber=Math.floor(Math.random()*300)+100;
 
@@ -472,21 +364,15 @@ setInterval(()=>{
 let change=Math.floor(Math.random()*80)+20;
 
 
-
 if(Math.random()>0.5){
-
 
 onlineNumber+=change;
 
-
 }else{
-
 
 onlineNumber-=Math.floor(change/2);
 
-
 }
-
 
 
 
@@ -518,13 +404,10 @@ document.getElementById("count").innerHTML=onlineNumber;
 
 
 
-
-
 const list=document.getElementById("list");
 
 
 let currentRef=null;
-
 
 
 
@@ -619,8 +502,6 @@ list.innerHTML+=`
 
 
 
-
-
 function openGames(){
 
 showData("games");
@@ -663,7 +544,6 @@ document.getElementById("home").style.display="block";
 
 
 </script>
-
 
 
 </body>
