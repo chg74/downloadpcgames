@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>العاب كمبيوتر تحميل</title>
+<title> العاب كمبيوتر تحميل </title>
 
 <style>
 
@@ -19,12 +19,10 @@ font-family:Tahoma;
 
 
 body{
-
 background:#070b18;
 color:white;
 min-height:100vh;
 padding:20px;
-
 }
 
 
@@ -32,18 +30,21 @@ padding:20px;
 #maintenance{
 
 display:none;
+
 text-align:center;
+
 margin-top:120px;
+
 font-size:30px;
 
 }
 
 
 
-
 .header{
 
 text-align:center;
+
 margin-bottom:30px;
 
 }
@@ -61,10 +62,15 @@ font-size:38px;
 .online{
 
 margin-top:15px;
+
 display:inline-block;
+
 background:#16a34a;
+
 padding:8px 20px;
+
 border-radius:20px;
+
 font-size:17px;
 
 }
@@ -75,16 +81,27 @@ font-size:17px;
 .telegram{
 
 position:fixed;
+
 right:15px;
+
 bottom:25px;
+
 width:60px;
+
 height:60px;
+
 background:#229ED9;
+
 border-radius:50%;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 box-shadow:0 5px 15px #0008;
+
 z-index:999;
 
 }
@@ -94,6 +111,7 @@ z-index:999;
 .telegram img{
 
 width:38px;
+
 height:38px;
 
 }
@@ -104,7 +122,9 @@ height:38px;
 .menu{
 
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
 gap:20px;
 
 }
@@ -114,11 +134,17 @@ gap:20px;
 .box{
 
 background:linear-gradient(145deg,#1e293b,#111827);
+
 padding:35px 15px;
+
 border-radius:25px;
+
 text-align:center;
+
 cursor:pointer;
+
 transition:.3s;
+
 box-shadow:0 10px 30px #0008;
 
 }
@@ -133,13 +159,11 @@ transform:scale(1.05);
 
 
 
-
 .box h2{
 
 font-size:24px;
 
 }
-
 
 
 
@@ -154,122 +178,88 @@ display:none;
 .back{
 
 display:inline-block;
+
 background:#2563eb;
+
 padding:12px 25px;
+
 border-radius:15px;
+
 margin-bottom:20px;
+
 cursor:pointer;
 
 }
 
 
 
-
-
-
-/* شكل الألعاب الجديد */
-
-
 .games{
 
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:20px;
 
 }
-
 
 
 
 .card{
 
 background:#1e293b;
-border-radius:18px;
+
+border-radius:20px;
+
 overflow:hidden;
+
 cursor:pointer;
+
 transition:.3s;
-box-shadow:0 8px 20px #0008;
 
 }
-
 
 
 
 .card:hover{
 
-transform:translateY(-5px);
+transform:translateY(-7px);
 
 }
-
 
 
 
 .card img{
 
 width:100%;
-height:140px;
+
+height:180px;
+
 object-fit:cover;
-display:block;
 
 }
-
 
 
 
 .card h2{
 
-padding:12px;
+padding:15px;
+
 text-align:center;
-font-size:18px;
-line-height:1.4;
 
 }
-
 
 
 
 .empty{
 
 text-align:center;
+
 font-size:25px;
+
 margin-top:60px;
 
 }
-
-
-
-
-
-@media(max-width:600px){
-
-
-.games{
-
-grid-template-columns:repeat(2,1fr);
-gap:12px;
-
-}
-
-
-
-.card img{
-
-height:110px;
-
-}
-
-
-
-.card h2{
-
-font-size:15px;
-padding:10px;
-
-}
-
-
-}
-
 
 
 
@@ -366,6 +356,7 @@ padding:10px;
 
 </div>
 
+
 </div>
 
 
@@ -430,6 +421,10 @@ const db=firebase.database();
 
 
 
+
+
+// الصيانة من الأدمن مباشرة
+
 db.ref("settings/maintenance").on("value",s=>{
 
 
@@ -459,6 +454,11 @@ document.getElementById("maintenance").style.display="none";
 
 
 
+
+
+
+// الاونلاين
+
 let onlineNumber=Math.floor(Math.random()*300)+100;
 
 
@@ -475,13 +475,18 @@ let change=Math.floor(Math.random()*80)+20;
 
 if(Math.random()>0.5){
 
+
 onlineNumber+=change;
+
 
 }else{
 
+
 onlineNumber-=Math.floor(change/2);
 
+
 }
+
 
 
 
@@ -506,6 +511,9 @@ document.getElementById("count").innerHTML=onlineNumber;
 
 
 },60000);
+
+
+
 
 
 
