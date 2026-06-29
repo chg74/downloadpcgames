@@ -17,73 +17,116 @@ box-sizing:border-box;
 font-family:Tahoma;
 }
 
+
 body{
+
 background:#070b18;
 color:white;
 min-height:100vh;
 padding:20px;
+
 }
+
 
 
 #maintenance{
+
 display:none;
+
 text-align:center;
+
 margin-top:120px;
+
 font-size:30px;
+
 }
+
 
 
 .header{
+
 text-align:center;
+
 margin-bottom:30px;
+
 }
 
+
+
 .header h1{
+
 font-size:38px;
+
 }
+
 
 
 .online{
+
 margin-top:15px;
+
 display:inline-block;
+
 background:#16a34a;
+
 padding:8px 20px;
+
 border-radius:20px;
+
 font-size:17px;
+
 }
+
+
 
 
 .telegram{
 
 position:fixed;
+
 right:15px;
+
 bottom:25px;
+
 width:60px;
+
 height:60px;
+
 background:#229ED9;
+
 border-radius:50%;
+
 display:flex;
+
 align-items:center;
+
 justify-content:center;
+
 box-shadow:0 5px 15px #0008;
+
 z-index:999;
 
 }
 
 
+
 .telegram img{
 
 width:38px;
+
 height:38px;
 
 }
 
 
 
+
 .menu{
 
 display:grid;
+
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
 gap:20px;
 
 }
@@ -93,14 +136,21 @@ gap:20px;
 .box{
 
 background:linear-gradient(145deg,#1e293b,#111827);
+
 padding:35px 15px;
+
 border-radius:25px;
+
 text-align:center;
+
 cursor:pointer;
+
 transition:.3s;
+
 box-shadow:0 10px 30px #0008;
 
 }
+
 
 
 .box:hover{
@@ -108,6 +158,7 @@ box-shadow:0 10px 30px #0008;
 transform:scale(1.05);
 
 }
+
 
 
 .box h2{
@@ -129,22 +180,32 @@ display:none;
 .back{
 
 display:inline-block;
+
 background:#2563eb;
+
 padding:12px 25px;
+
 border-radius:15px;
+
 margin-bottom:20px;
+
 cursor:pointer;
 
 }
 
 
 
-/* تعديل حجم المربعات */
+
+
+/* كروت الألعاب والباتشات نفس الشكل */
+
 
 .games{
 
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+
+grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+
 gap:15px;
 
 }
@@ -154,12 +215,19 @@ gap:15px;
 .card{
 
 background:#1e293b;
-border-radius:20px;
+
+border-radius:18px;
+
 overflow:hidden;
+
 cursor:pointer;
+
 transition:.3s;
 
+height:210px;
+
 }
+
 
 
 .card:hover{
@@ -173,8 +241,12 @@ transform:translateY(-7px);
 .card img{
 
 width:100%;
-height:110px;
+
+height:140px;
+
 object-fit:cover;
+
+display:block;
 
 }
 
@@ -182,9 +254,13 @@ object-fit:cover;
 
 .card h2{
 
-padding:8px;
+padding:10px;
+
 text-align:center;
-font-size:14px;
+
+font-size:16px;
+
+line-height:1.4;
 
 }
 
@@ -193,7 +269,9 @@ font-size:14px;
 .empty{
 
 text-align:center;
+
 font-size:25px;
+
 margin-top:60px;
 
 }
@@ -201,11 +279,11 @@ margin-top:60px;
 
 </style>
 
+
 </head>
 
 
 <body>
-
 
 
 <div id="maintenance">
@@ -215,17 +293,18 @@ margin-top:60px;
 </div>
 
 
-
-
 <div id="site">
-
 
 
 <div class="header">
 
+
 <h1>
+
 🎮 Game Store
+
 </h1>
+
 
 
 <div class="online">
@@ -239,14 +318,11 @@ margin-top:60px;
 
 
 
-
-
 <a href="https://t.me/gaamesdownloads" target="_blank" class="telegram">
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg">
 
 </a>
-
 
 
 
@@ -259,17 +335,22 @@ margin-top:60px;
 
 <div class="box" onclick="openGames()">
 
+
 <h2>
 
 🎮 تحميل جميع ألعاب الكمبيوتر
 
 </h2>
 
+
 </div>
 
 
 
+
+
 <div class="box" onclick="openPatch()">
+
 
 <h2>
 
@@ -277,15 +358,15 @@ margin-top:60px;
 
 </h2>
 
-</div>
-
 
 </div>
 
 
+
 </div>
 
 
+</div>
 
 
 
@@ -303,21 +384,10 @@ margin-top:60px;
 <div class="games" id="list"></div>
 
 
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+</div><script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
 
 <script>
 
@@ -325,8 +395,11 @@ margin-top:60px;
 firebase.initializeApp({
 
 apiKey:"AIzaSyAUc2cH9gVE7RECiW19XQXJNZQxVH96sFE",
+
 authDomain:"zezo-59a8d.firebaseapp.com",
+
 databaseURL:"https://zezo-59a8d-default-rtdb.firebaseio.com",
+
 projectId:"zezo-59a8d"
 
 });
@@ -339,20 +412,29 @@ const db=firebase.database();
 
 
 
+// الصيانة
+
 db.ref("settings/maintenance").on("value",s=>{
 
 
 if(s.val()==true){
 
+
 document.getElementById("site").style.display="none";
+
 document.getElementById("maintenance").style.display="block";
+
 
 }else{
 
+
 document.getElementById("site").style.display="block";
+
 document.getElementById("maintenance").style.display="none";
 
+
 }
+
 
 });
 
@@ -361,15 +443,20 @@ document.getElementById("maintenance").style.display="none";
 
 
 
+// الاونلاين
+
 let onlineNumber=Math.floor(Math.random()*300)+100;
 
+
 document.getElementById("count").innerHTML=onlineNumber;
+
 
 
 setInterval(()=>{
 
 
 let change=Math.floor(Math.random()*80)+20;
+
 
 
 if(Math.random()>0.5){
@@ -381,6 +468,7 @@ onlineNumber+=change;
 onlineNumber-=Math.floor(change/2);
 
 }
+
 
 
 
@@ -414,7 +502,11 @@ document.getElementById("count").innerHTML=onlineNumber;
 
 const list=document.getElementById("list");
 
+
 let currentRef=null;
+
+
+
 
 
 
@@ -425,10 +517,20 @@ function showData(type){
 
 document.getElementById("home").style.display="none";
 
+
 document.getElementById("content").style.display="block";
 
 
+
 list.innerHTML="<div class='empty'>جاري التحميل...</div>";
+
+
+
+if(currentRef){
+
+currentRef.off();
+
+}
 
 
 
@@ -445,9 +547,11 @@ list.innerHTML="";
 
 if(!snap.exists()){
 
+
 list.innerHTML="<div class='empty'>لا يوجد محتوى حاليا</div>";
 
 return;
+
 
 }
 
@@ -494,11 +598,15 @@ list.innerHTML+=`
 
 
 
+
+
 function openGames(){
 
 showData("games");
 
 }
+
+
 
 
 
@@ -511,10 +619,20 @@ showData("patches");
 
 
 
+
 function backHome(){
 
 
+if(currentRef){
+
+currentRef.off();
+
+}
+
+
+
 document.getElementById("content").style.display="none";
+
 
 document.getElementById("home").style.display="block";
 
@@ -528,4 +646,4 @@ document.getElementById("home").style.display="block";
 
 </body>
 
-  </html>
+</html>
