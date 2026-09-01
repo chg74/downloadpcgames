@@ -2,11 +2,10 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>العاب كمبيوتر تحميل</title>
+<title>Game Store</title>
 
 <style>
 
@@ -14,45 +13,263 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Tahoma;
+font-family:Tahoma,Arial,sans-serif;
 }
 
 body{
-background:#070b18;
-color:white;
+background:
+radial-gradient(circle at top,#172554 0,#070b18 45%,#03050d 100%);
+color:#fff;
 min-height:100vh;
 padding:20px;
+}
+
+button{
+font-family:inherit;
 }
 
 #maintenance{
 display:none;
 text-align:center;
-margin-top:120px;
+padding-top:120px;
+}
+
+#maintenance .icon{
+font-size:70px;
+margin-bottom:20px;
+}
+
+#maintenance h1{
 font-size:30px;
+margin-bottom:10px;
 }
 
-.header{
-text-align:center;
-margin-bottom:30px;
-}
-
-.header h1{
-font-size:38px;
-}
-
-.online{
-margin-top:15px;
-display:inline-block;
-background:#16a34a;
-padding:8px 20px;
-border-radius:20px;
+#maintenance p{
+color:#94a3b8;
 font-size:17px;
 }
 
+/* HEADER */
+
+.header{
+max-width:1100px;
+margin:auto;
+text-align:center;
+padding:25px 10px 30px;
+}
+
+.logo{
+font-size:42px;
+font-weight:bold;
+background:linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.subtitle{
+color:#94a3b8;
+margin-top:8px;
+font-size:16px;
+}
+
+.online{
+display:inline-flex;
+align-items:center;
+gap:8px;
+margin-top:18px;
+padding:9px 18px;
+border:1px solid #22c55e55;
+background:#052e16aa;
+border-radius:30px;
+color:#86efac;
+font-size:15px;
+}
+
+/* MENU */
+
+.menu{
+max-width:1000px;
+margin:10px auto 35px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+.box{
+position:relative;
+overflow:hidden;
+background:linear-gradient(145deg,#172554,#0f172a);
+border:1px solid #334155;
+border-radius:25px;
+padding:35px 20px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 15px 40px #0008;
+}
+
+.box:hover{
+transform:translateY(-6px);
+border-color:#60a5fa;
+box-shadow:0 20px 45px #000b;
+}
+
+.box .emoji{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.box h2{
+font-size:23px;
+}
+
+.box p{
+color:#94a3b8;
+margin-top:8px;
+}
+
+.free{
+border-color:#16a34a55;
+}
+
+.paid{
+border-color:#f59e0b55;
+}
+
+/* CONTENT */
+
+#content{
+display:none;
+max-width:1100px;
+margin:auto;
+}
+
+.topbar{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+margin-bottom:25px;
+}
+
+.title{
+font-size:28px;
+}
+
+.back{
+background:#1e293b;
+border:1px solid #475569;
+color:#fff;
+padding:11px 20px;
+border-radius:13px;
+cursor:pointer;
+transition:.2s;
+}
+
+.back:hover{
+background:#334155;
+}
+
+/* GAMES */
+
+.games{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:20px;
+}
+
+.card{
+background:linear-gradient(145deg,#1e293b,#0f172a);
+border:1px solid #334155;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 10px 25px #0008;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-7px);
+border-color:#60a5fa;
+}
+
+.card-img{
+width:100%;
+height:210px;
+object-fit:cover;
+display:block;
+}
+
+.card-info{
+padding:15px;
+}
+
+.card h2{
+font-size:18px;
+margin-bottom:10px;
+white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+}
+
+.price{
+font-size:20px;
+font-weight:bold;
+color:#fbbf24;
+margin-bottom:13px;
+}
+
+.free-label{
+font-size:15px;
+color:#4ade80;
+margin-bottom:13px;
+}
+
+.buy{
+display:block;
+width:100%;
+border:0;
+border-radius:12px;
+padding:12px;
+background:linear-gradient(90deg,#f59e0b,#ea580c);
+color:#fff;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.2s;
+}
+
+.buy:hover{
+transform:scale(1.03);
+filter:brightness(1.1);
+}
+
+.download{
+display:block;
+width:100%;
+border:0;
+border-radius:12px;
+padding:12px;
+background:linear-gradient(90deg,#2563eb,#4f46e5);
+color:#fff;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.empty{
+grid-column:1/-1;
+text-align:center;
+padding:70px 20px;
+color:#94a3b8;
+font-size:20px;
+}
+
+/* TELEGRAM */
+
 .telegram{
 position:fixed;
-right:15px;
-bottom:25px;
+right:18px;
+bottom:22px;
 width:60px;
 height:60px;
 background:#229ED9;
@@ -60,87 +277,80 @@ border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
-box-shadow:0 5px 15px #0008;
+box-shadow:0 8px 25px #0009;
 z-index:999;
+transition:.3s;
+}
+
+.telegram:hover{
+transform:scale(1.1);
 }
 
 .telegram img{
-width:38px;
-height:38px;
+width:37px;
+height:37px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+body{
+padding:12px;
+}
+
+.logo{
+font-size:32px;
 }
 
 .menu{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:1fr;
+gap:15px;
 }
 
 .box{
-background:linear-gradient(145deg,#1e293b,#111827);
-padding:35px 15px;
-border-radius:25px;
-text-align:center;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 10px 30px #0008;
+padding:27px 15px;
 }
 
-.box:hover{
-transform:scale(1.05);
-}
-
-.box h2{
-font-size:24px;
-}
-
-#content{
-display:none;
-}
-
-.back{
-display:inline-block;
-background:#2563eb;
-padding:12px 25px;
-border-radius:15px;
-margin-bottom:20px;
-cursor:pointer;
-}
-
-/* تم تعديل هذا الجزء */
 .games{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(180px,180px));
-justify-content:center;
-gap:20px;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 }
 
-.card{
-background:#1e293b;
-border-radius:20px;
-overflow:hidden;
-cursor:pointer;
-transition:.3s;
+.card-img{
+height:170px;
 }
 
-.card:hover{
-transform:translateY(-7px);
-}
-
-.card img{
-width:100%;
-height:180px;
-object-fit:cover;
+.card-info{
+padding:11px;
 }
 
 .card h2{
-padding:15px;
-text-align:center;
+font-size:16px;
 }
 
-.empty{
-text-align:center;
-font-size:25px;
-margin-top:60px;
+.price{
+font-size:18px;
+}
+
+.buy,.download{
+font-size:14px;
+padding:10px 5px;
+}
+
+.topbar{
+align-items:flex-start;
+}
+
+.title{
+font-size:22px;
+}
+
+.telegram{
+width:55px;
+height:55px;
+}
+
 }
 
 </style>
@@ -149,63 +359,84 @@ margin-top:60px;
 
 <body>
 
+<!-- الصيانة -->
+
 <div id="maintenance">
 
-🔧 الموقع تحت الصيانة حاليا
+<div class="icon">🔧</div>
+
+<h1>الموقع تحت الصيانة</h1>
+
+<p>نرجع لكم قريبًا ❤️</p>
 
 </div>
+
+
+<!-- الموقع -->
 
 <div id="site">
 
-<div class="header">
+<header class="header">
 
-<h1>
-🎮 Game Store
-</h1>
+<div class="logo">🎮 GAME STORE</div>
+
+<div class="subtitle">
+متجر ألعاب الكمبيوتر
+</div>
 
 <div class="online">
-🟢 Online : <span id="count">100</span>
+🟢 متصل الآن :
+<span id="count">100</span>
 </div>
 
-</div>
+</header>
 
-<a href="https://t.me/gaamesdownloads" target="_blank" class="telegram">
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg">
+<!-- القائمة -->
 
-</a><div id="home">
+<div id="home">
 
 <div class="menu">
 
-<div class="box" onclick="openGames()">
+<div class="box free" onclick="openGames()">
 
-<h2>
+<div class="emoji">🎮</div>
 
-🎮 تحميل جميع ألعاب الكمبيوتر
+<h2>الألعاب المجانية</h2>
 
-</h2>
-
-</div>
-
-<div class="box" onclick="openPatch()">
-
-<h2>
-
-♻️ تحميل العاب مدفوعه
-
-</h2>
+<p>تحميل ألعاب الكمبيوتر مجانًا</p>
 
 </div>
 
+
+<div class="box paid" onclick="openPaid()">
+
+<div class="emoji">💰</div>
+
+<h2>الألعاب المدفوعة</h2>
+
+<p>ألعاب مميزة للشراء</p>
+
 </div>
 
 </div>
+
+</div>
+
+
+<!-- المحتوى -->
 
 <div id="content">
 
-<div class="back" onclick="backHome()">
+<div class="topbar">
 
+<div class="title" id="sectionTitle">
+🎮 الألعاب
+</div>
+
+<button class="back" onclick="backHome()">
 ⬅ رجوع
+</button>
 
 </div>
 
@@ -213,11 +444,27 @@ margin-top:60px;
 
 </div>
 
+
 </div>
+
+
+<!-- Telegram -->
+
+<a
+href="https://t.me/expertpca"
+target="_blank"
+class="telegram"
+title="Telegram">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg">
+
+</a>
+
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
 
 <script>
 
@@ -233,13 +480,19 @@ projectId:"zezo-59a8d"
 
 });
 
+
 const db=firebase.database();
 
-// الصيانة من الأدمن مباشرة
+const list=document.getElementById("list");
 
-db.ref("settings/maintenance").on("value",s=>{
+let currentRef=null;
 
-if(s.val()==true){
+
+/* الصيانة */
+
+db.ref("settings/maintenance").on("value",snap=>{
+
+if(snap.val()===true){
 
 document.getElementById("site").style.display="none";
 
@@ -255,11 +508,13 @@ document.getElementById("maintenance").style.display="none";
 
 });
 
-// الاونلاين
+
+/* عدد المتصلين - شكل تجريبي */
 
 let onlineNumber=Math.floor(Math.random()*300)+100;
 
-document.getElementById("count").innerHTML=onlineNumber;
+document.getElementById("count").textContent=onlineNumber;
+
 
 setInterval(()=>{
 
@@ -275,31 +530,27 @@ onlineNumber-=Math.floor(change/2);
 
 }
 
-if(onlineNumber<90){
+if(onlineNumber<90) onlineNumber=90;
 
-onlineNumber=90;
+if(onlineNumber>5000) onlineNumber=5000;
 
-}
+document.getElementById("count").textContent=onlineNumber;
 
-if(onlineNumber>5000){
+},60000);
 
-onlineNumber=5000;
 
-}
+/* عرض البيانات */
 
-document.getElementById("count").innerHTML=onlineNumber;
-
-},60000);const list=document.getElementById("list");
-
-let currentRef=null;
-
-function showData(type){
+function showData(type,title){
 
 document.getElementById("home").style.display="none";
 
 document.getElementById("content").style.display="block";
 
-list.innerHTML="<div class='empty'>جاري التحميل...</div>";
+document.getElementById("sectionTitle").textContent=title;
+
+list.innerHTML="<div class='empty'>⏳ جاري تحميل الألعاب...</div>";
+
 
 if(currentRef){
 
@@ -307,59 +558,166 @@ currentRef.off();
 
 }
 
+
 currentRef=db.ref(type);
+
 
 currentRef.once("value",snap=>{
 
 list.innerHTML="";
 
+
 if(!snap.exists()){
 
-list.innerHTML="<div class='empty'>لا يوجد محتوى حاليا</div>";
+list.innerHTML="<div class='empty'>😔 لا يوجد ألعاب حاليًا</div>";
 
 return;
 
 }
 
+
 snap.forEach(item=>{
 
 let data=item.val();
 
-list.innerHTML+=`
+let card=document.createElement("div");
 
-<div class="card" onclick="window.open('${data.link}')">
+card.className="card";
 
-<img src="${data.image}">
 
-<h2>${data.name}</h2>
+if(type==="patches"){
+
+card.innerHTML=`
+
+<img class="card-img"
+src="${escapeHTML(data.image)}"
+onerror="this.src='https://via.placeholder.com/500x500?text=Game'">
+
+<div class="card-info">
+
+<h2>${escapeHTML(data.name)}</h2>
+
+<div class="price">
+💰 ${escapeHTML(data.price || "غير محدد")} جنيه
+</div>
+
+<button class="buy"
+onclick="buyGame('${encodeURIComponent(data.name || "")}','${encodeURIComponent(data.price || "")}')">
+
+🛒 شراء الآن
+
+</button>
 
 </div>
 
 `;
 
+}else{
+
+card.innerHTML=`
+
+<img class="card-img"
+src="${escapeHTML(data.image)}"
+onerror="this.src='https://via.placeholder.com/500x500?text=Game'">
+
+<div class="card-info">
+
+<h2>${escapeHTML(data.name)}</h2>
+
+<div class="free-label">
+🟢 مجانية
+</div>
+
+<button class="download"
+onclick="downloadGame('${encodeURIComponent(data.link || "")}')">
+
+⬇ تحميل اللعبة
+
+</button>
+
+</div>
+
+`;
+
+}
+
+
+list.appendChild(card);
+
 });
 
 });
 
 }
+
+
+/* الألعاب المجانية */
 
 function openGames(){
 
-showData("games");
+showData(
+"games",
+"🎮 الألعاب المجانية"
+);
 
 }
 
-function openPatch(){
 
-showData("patches");
+/* الألعاب المدفوعة */
+
+function openPaid(){
+
+showData(
+"patches",
+"✨ الألعاب المدفوعة"
+);
 
 }
+
+
+/* شراء اللعبة */
+
+function buyGame(name,price){
+
+let gameName=decodeURIComponent(name);
+
+let gamePrice=decodeURIComponent(price);
+
+let message=
+"السلام عليكم 👋%0A%0A"+
+"أريد شراء لعبة: "+encodeURIComponent(gameName)+
+"%0Aالسعر: "+encodeURIComponent(gamePrice)+" جنيه";
+
+
+window.open(
+"https://t.me/expertpca?text="+message,
+"_blank"
+);
+
+}
+
+
+/* تحميل المجاني */
+
+function downloadGame(link){
+
+window.open(
+decodeURIComponent(link),
+"_blank"
+);
+
+}
+
+
+/* رجوع */
 
 function backHome(){
 
 if(currentRef){
 
 currentRef.off();
+
+currentRef=null;
 
 }
 
@@ -369,8 +727,22 @@ document.getElementById("home").style.display="block";
 
 }
 
+
+/* حماية بسيطة للنصوص */
+
+function escapeHTML(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
 </script>
 
 </body>
 
-</html>
+  </html>
